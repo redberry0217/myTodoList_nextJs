@@ -6,7 +6,7 @@ export type CompanyInfo = {
   image: string;
 };
 
-export type TodosList = {
+export type Todos = {
   id: string;
   title: string;
   content: string;
