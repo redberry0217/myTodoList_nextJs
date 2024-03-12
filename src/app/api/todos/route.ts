@@ -1,10 +1,14 @@
-export async function GET(request: Request) {
-  const response = await fetch(`http://localhost:4000/companyInfo`);
-  const companyInfo = await response.json();
+import { TodosList } from '@/app/types';
 
-  if (!companyInfo) {
-    return new Response("회사 정보가 없습니다.", { status: 404 });
+export async function GET(request: Request) {
+  const response = await fetch(`http://localhost:4000/todos`);
+  const todosList: TodosList[] = await response.json();
+
+  if (!todosList) {
+    return new Response('Todos 정보를 찾을 수 없습니다.', { status: 404 });
+  } else if (todosList.length === 0) {
+    return [];
   }
 
-  return Response.json({ companyInfo: companyInfo });
+  return Response.json({ todosList: todosList });
 }

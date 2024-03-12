@@ -5,3 +5,10 @@ export type CompanyInfo = {
   address: string;
   image: string;
 };
+
+export type TodosList = {
+  id: string;
+  title: string;
+  content: string;
+  isDone: boolean;
+};

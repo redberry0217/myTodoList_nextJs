@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav className="w-100 flex justify-center items-center gap-x-20 h-20 font-semibold text-lg bg-pink-100">
+        <nav className="w-100 flex justify-center items-center gap-x-20 h-20 font-semibold text-lg bg-rose-200">
           <Link href="/">HOME</Link>
           <Link href="/about">ABOUT</Link>
           <Link href="/report">REPORT</Link>
