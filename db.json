@@ -1,0 +1,29 @@
+{
+  "companyInfo": {
+    "name": "(주)The Screaming Cat",
+    "ceo": "Mrs.NyangNyang",
+    "description": "고양이를 좋아하는 사람들을 위한 꿈의 회사",
+    "address": "서울 중구 마장로9길 28",
+    "image": "https://i.kym-cdn.com/entries/icons/original/000/028/692/cat.jpg"
+  },
+  "todos": [
+    {
+      "id": "1",
+      "title": "커피 마시기",
+      "contents": "아메리카노 마시기",
+      "isDone": false
+    },
+    {
+      "id": "2",
+      "title": "고양이 사진보기",
+      "contents": "고양이 릴스 10개 단체방에 공유하기",
+      "isDone": false
+    },
+    {
+      "id": "3",
+      "title": "고양이 릴스 5개 공유하기",
+      "contents": "인스타 단체방에 공유",
+      "isDone": true
+    }
+  ]
+}
