@@ -13,8 +13,8 @@ async function ReportPage() {
         <div className="flex flex-col">
           <h1 className="text-2xl mb-3.5 text-center">😺투두리스트 통계😺</h1>
           <p className="mt-3.5 leading-loose">
-            현재까지 <span className="font-semibold text-rose-500">{todosList.length}개</span>의 투두리스트가
-            등록되었습니다.
+            현재 <span className="font-semibold text-rose-500">{todosList.length}개</span>의 투두리스트가 등록되어
+            있습니다.
             <br />
             해야할 todo는 <span className="font-semibold text-rose-500">{todoList.length}개</span>, 완료된 todo는{' '}
             <span className="font-semibold text-rose-500">{doneList.length}개</span>가 있습니다.

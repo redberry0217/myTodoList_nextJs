@@ -1,7 +1,14 @@
-import React from "react";
+import TodoForm from '@/components/todoForm';
+import TodoItemList from '@/components/todoItemList';
+import React from 'react';
 
 function TodosCsrPage() {
-  return <div>TodosCsrPage</div>;
+  return (
+    <>
+      <TodoForm />
+      <TodoItemList />
+    </>
+  );
 }
 
 export default TodosCsrPage;
