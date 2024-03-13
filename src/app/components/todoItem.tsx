@@ -46,8 +46,8 @@ function TodoItem({ todoData }: { todoData: Todos[] }) {
             <div className={`w-[400px] ${item.isDone ? 'apply: text-gray-400' : 'apply: text-black'}`}>
               {item.content}
             </div>
-            <div className="flex gap-2">
-              <button style={buttonStyle}>수정</button>
+            <div className="flex gap-2 justify-end w-[150px]">
+              {item.isDone ? null : <button style={buttonStyle}>수정</button>}
               <button style={buttonStyle}>삭제</button>
               <div
                 className="flex justify-center items-center cursor-pointer"
