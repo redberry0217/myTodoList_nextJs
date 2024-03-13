@@ -14,7 +14,7 @@ function TodoItem({ todoData }: { todoData: Todos[] }) {
             <div className="w-[400px]">{item.content}</div>
             <div className="flex gap-2">
               <button style={buttonStyle}>보기</button>
-              <button style={buttonStyle}>완료</button>
+              <button style={buttonStyle}>{item.isDone ? '취소' : '완료'}</button>
             </div>
           </li>
         ))}
