@@ -33,3 +33,21 @@ export async function POST(request: Request): Promise<Response> {
     return new Response(`서버 에러`, { status: 500 });
   }
 }
+
+export async function PATCH(request: Request) {
+  try {
+    const { id, isDone } = await request.json();
+    if (!id) {
+      return new Response('존재하지 않는 todo입니다.', { status: 400 });
+    }
+
+    await fetch(`http://localhost:4000/todos/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ isDone })
+    });
+    return new Response('Todo 상태 업데이트 완료', { status: 200 });
+  } catch (error) {
+    console.error(`에러 발생`, error);
+    return new Response('서버 에러', { status: 500 });
+  }
+}

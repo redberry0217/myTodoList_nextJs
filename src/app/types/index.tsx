@@ -16,3 +16,5 @@ export type Todos = {
 export type TodoList = Todos[];
 
 export type NewTodo = Omit<Todos, 'id'>;
+
+export type UpdatedTodo = Pick<Todos, 'id' | 'isDone'>;
