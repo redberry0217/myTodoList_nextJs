@@ -4,6 +4,9 @@ import React from 'react';
 import { buttonStyle } from '@/styles/styles';
 import { Todos, UpdatedTodo } from '@/app/types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Checked from '../../assets/checked.png';
+import Unchecked from '../../assets/unchecked.png';
+import Image from 'next/image';
 
 function TodoItem({ todoData }: { todoData: Todos[] }) {
   const queryClient = useQueryClient();
@@ -37,13 +40,25 @@ function TodoItem({ todoData }: { todoData: Todos[] }) {
       <ul>
         {todoData.map((item) => (
           <li key={item.id} className="flex mb-2 hover:bg-rose-50">
-            <div className="w-[200px]">{item.title}</div>
-            <div className="w-[400px]">{item.content}</div>
+            <div className={`w-[200px] ${item.isDone ? 'apply: text-gray-400' : 'apply: text-black'}`}>
+              {item.title}
+            </div>
+            <div className={`w-[400px] ${item.isDone ? 'apply: text-gray-400' : 'apply: text-black'}`}>
+              {item.content}
+            </div>
             <div className="flex gap-2">
-              <button style={buttonStyle}>보기</button>
-              <button style={buttonStyle} onClick={() => toggleIsDone(item.id, item.isDone)}>
-                {item.isDone ? '취소' : '완료'}
-              </button>
+              <button style={buttonStyle}>수정</button>
+              <button style={buttonStyle}>삭제</button>
+              <div
+                className="flex justify-center items-center cursor-pointer"
+                onClick={() => toggleIsDone(item.id, item.isDone)}
+              >
+                {item.isDone ? (
+                  <Image src={Checked} alt="체크된 박스" style={{ width: '18px' }} />
+                ) : (
+                  <Image src={Unchecked} alt="체크 안된 박스" style={{ width: '15px' }} />
+                )}
+              </div>
             </div>
           </li>
         ))}

@@ -23,25 +23,31 @@
       "id": "3",
       "title": "고양이 릴스 공유하기",
       "content": "인스타 단체방에 최소 5개 공유하기",
-      "isDone": true
+      "isDone": false
     },
     {
       "id": "46b7",
       "title": "ㅅㅅㅅㅅ",
       "content": "ㅅㅅㅅ",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": "1009",
       "title": "ㅇㅇㅇㅇ",
       "content": "ㅇㅇㅇㅇ",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": "4ba5",
       "title": "111",
       "content": "111",
       "isDone": true
+    },
+    {
+      "id": "5eb4",
+      "title": "빨래하기",
+      "content": "사실은 세탁기가 다 하는 거지만",
+      "isDone": false
     }
   ]
 }
