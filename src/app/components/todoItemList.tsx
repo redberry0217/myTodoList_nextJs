@@ -34,13 +34,11 @@ function TodoItemList() {
   return (
     <section className="flex flex-col items-center pt-10 gap-y-10">
       <div className="w-[800px] border rounded-xl p-5">
-        <h1 className="text-lg text-rose-500">✏️ TodoList</h1>
-        <hr />
+        <h1 className="text-lg text-rose-500 mb-3">✏️ TodoList</h1>
         {isLoading ? <div>데이터 로딩....</div> : <TodoItem todoData={undoneList} />}
       </div>
       <div className="w-[800px] border rounded-xl p-5">
         <h1 className="text-lg text-rose-500">✅ DoneList</h1>
-        <hr />
         {isLoading ? <div>데이터 로딩....</div> : <TodoItem todoData={doneList} />}
       </div>
     </section>

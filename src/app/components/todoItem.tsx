@@ -38,8 +38,14 @@ function TodoItem({ todoData }: { todoData: Todos[] }) {
   return (
     <section className="flex flex-col items-center pt-3">
       <ul>
+        <li className="flex mb-2">
+          <div className="w-[200px] text-center">제목</div>
+          <div className="w-[400px] text-center">내용</div>
+          <div className="w-[150px] text-center">관리</div>
+        </li>
+        <hr />
         {todoData.map((item) => (
-          <li key={item.id} className="flex mb-2 hover:bg-rose-50">
+          <li key={item.id} className="flex hover:bg-rose-50 p-2">
             <div className={`w-[200px] ${item.isDone ? 'apply: text-gray-400' : 'apply: text-black'}`}>
               {item.title}
             </div>
