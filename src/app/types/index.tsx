@@ -12,3 +12,5 @@ export type Todos = {
   content: string;
   isDone: boolean;
 };
+
+export type TodoList = Todos[];

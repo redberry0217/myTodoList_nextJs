@@ -10,19 +10,19 @@
     {
       "id": "1",
       "title": "커피 마시기",
-      "contents": "아메리카노 마시기",
+      "content": "아메리카노 마시기",
       "isDone": false
     },
     {
       "id": "2",
       "title": "고양이 사진보기",
-      "contents": "고양이 릴스 10개 단체방에 공유하기",
+      "content": "고양이 릴스 10개 단체방에 공유하기",
       "isDone": false
     },
     {
       "id": "3",
-      "title": "고양이 릴스 5개 공유하기",
-      "contents": "인스타 단체방에 공유",
+      "title": "고양이 릴스 공유하기",
+      "content": "인스타 단체방에 최소 5개 공유하기",
       "isDone": true
     }
   ]

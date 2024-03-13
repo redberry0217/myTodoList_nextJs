@@ -1,26 +1,23 @@
+'use client';
+
 import React from 'react';
 import { buttonStyle } from '@/styles/styles';
+import { Todos } from '@/app/types';
 
-function TodoItem() {
+function TodoItem({ todoData }: { todoData: Todos[] }) {
   return (
     <section className="flex flex-col items-center pt-3">
       <ul>
-        <li className="flex mb-2 hover:bg-gray-100">
-          <div className="w-[200px]">빨래하기</div>
-          <div className="w-[400px]">세탁기가 대신 하는 거겠지만</div>
-          <div className="flex gap-2">
-            <button style={buttonStyle}>보기</button>
-            <button style={buttonStyle}>완료</button>
-          </div>
-        </li>
-        <li className="flex mb-2 hover:bg-gray-100">
-          <div className="w-[200px]">커피마시기</div>
-          <div className="w-[400px]">끝내주는 커피 마시고 싶다</div>
-          <div className="flex gap-2">
-            <button style={buttonStyle}>보기</button>
-            <button style={buttonStyle}>완료</button>
-          </div>
-        </li>
+        {todoData.map((item) => (
+          <li key={item.id} className="flex mb-2 hover:bg-rose-50">
+            <div className="w-[200px]">{item.title}</div>
+            <div className="w-[400px]">{item.content}</div>
+            <div className="flex gap-2">
+              <button style={buttonStyle}>보기</button>
+              <button style={buttonStyle}>완료</button>
+            </div>
+          </li>
+        ))}
       </ul>
     </section>
   );
