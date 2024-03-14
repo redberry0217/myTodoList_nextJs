@@ -15,7 +15,6 @@ function EditForm({
   setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
   id: string;
 }) {
-  console.log('받아온 Todo', data);
   const [title, setTitle] = useState(data.title);
   const [content, setContent] = useState(data.content);
   const queryClient = useQueryClient();
@@ -47,9 +46,6 @@ function EditForm({
       alert(`제목과 내용을 입력해주세요.`);
       return;
     }
-
-    console.log('작성내용', title, content);
-
     try {
       const editedTodo: editedTodo = {
         title,
@@ -83,7 +79,7 @@ function EditForm({
           취소
         </button>
         <button style={buttonStyle} type="submit">
-          수정
+          완료
         </button>
       </div>
     </form>

@@ -4,8 +4,11 @@ import React from 'react';
 import TodoItem from './todoItem';
 import { useQuery } from '@tanstack/react-query';
 import { TodoList } from '@/app/types';
+import { buttonStyle } from '@/styles/styles';
+import { useRouter } from 'next/navigation';
 
 function TodoItemList() {
+  const router = useRouter();
   const { data, isLoading } = useQuery<TodoList>({
     queryKey: ['todos'],
     queryFn: async () => {
@@ -40,6 +43,11 @@ function TodoItemList() {
       <div className="w-[800px] border rounded-xl p-5">
         <h1 className="text-lg text-rose-500">✅ DoneList</h1>
         {isLoading ? <div>데이터 로딩....</div> : <TodoItem todoData={doneList} />}
+      </div>
+      <div className="w-[800px] flex justify-end">
+        <button style={buttonStyle} onClick={() => router.push(`/report`)}>
+          Todo 통계 보기
+        </button>
       </div>
     </section>
   );

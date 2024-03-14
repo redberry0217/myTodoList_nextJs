@@ -9,9 +9,9 @@
   "todos": [
     {
       "id": "2",
-      "title": "고양이 사진보기",
+      "title": "고양이 사진보기ㅎㅎ",
       "content": "고양이 릴스 10개 단체방에 공유하기",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": "3",
