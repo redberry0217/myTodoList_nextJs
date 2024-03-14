@@ -7,6 +7,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Checked from '../../assets/checked.png';
 import Unchecked from '../../assets/unchecked.png';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function TodoItem({ todoData }: { todoData: Todos[] }) {
   const queryClient = useQueryClient();
@@ -35,6 +36,32 @@ function TodoItem({ todoData }: { todoData: Todos[] }) {
       }
     });
   };
+
+  const deleteMutation = useMutation({
+    mutationFn: async (id: string) => {
+      try {
+        await fetch(`http://localhost:3000/api/todos/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+      } catch (error) {
+        alert(`Todo 삭제 에러 발생, 다시 시도하세요.`);
+        console.log('error', error);
+      }
+    }
+  });
+
+  const handleDelete = (id: string) => {
+    if (!window.confirm(`해당 Todo를 삭제하시겠습니까?`)) return;
+    deleteMutation.mutate(id, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['todos'] });
+      }
+    });
+  };
+
   return (
     <section className="flex flex-col items-center pt-3">
       <ul>
@@ -53,8 +80,17 @@ function TodoItem({ todoData }: { todoData: Todos[] }) {
               {item.content}
             </div>
             <div className="flex gap-2 justify-end w-[150px]">
-              {item.isDone ? null : <button style={buttonStyle}>수정</button>}
-              <button style={buttonStyle}>삭제</button>
+              <Link href={`/todos-csr/${item.id}`} style={buttonStyle}>
+                보기
+              </Link>
+              <button
+                style={buttonStyle}
+                onClick={() => {
+                  handleDelete(item.id);
+                }}
+              >
+                삭제
+              </button>
               <div
                 className="flex justify-center items-center cursor-pointer"
                 onClick={() => toggleIsDone(item.id, item.isDone)}

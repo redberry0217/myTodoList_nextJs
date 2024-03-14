@@ -13,14 +13,10 @@ function TodoForm() {
   const writeMutation = useMutation({
     mutationFn: async (newTodo: NewTodo) => {
       try {
-        const response = await fetch(`http://localhost:3000/api/todos`, {
+        await fetch(`http://localhost:3000/api/todos`, {
           method: 'POST',
           body: JSON.stringify(newTodo)
         });
-        console.log(1);
-        // const todo = await response.json();
-        // console.log('2', todo);
-        // return todo;
       } catch (error) {
         console.log('error', error);
       }
@@ -57,7 +53,7 @@ function TodoForm() {
   return (
     <section className="flex justify-center bg-rose-50">
       <form
-        className="flex gap-4 m-10"
+        className="flex gap-4 m-5"
         onSubmit={(e) => {
           e.preventDefault();
           handleOnSubmit();
