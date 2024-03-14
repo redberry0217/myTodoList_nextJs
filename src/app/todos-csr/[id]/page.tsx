@@ -80,7 +80,7 @@ function DetailPage() {
         <hr />
         <div className="flex flex-col pl-5 mt-5">
           {isEditing ? (
-            <EditForm data={myTodo} setIsEditing={setIsEditing} />
+            <EditForm data={myTodo} setIsEditing={setIsEditing} id={id} />
           ) : (
             <h3 className="leading-loose">
               🔹제목 : {myTodo.title}

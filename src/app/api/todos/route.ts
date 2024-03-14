@@ -29,7 +29,6 @@ export async function POST(request: Request): Promise<Response> {
     });
     return new Response('Todo 등록 완료', { status: 200 });
   } catch (error) {
-    console.error(`에러 발생`, error);
     return new Response(`서버 에러`, { status: 500 });
   }
 }
@@ -47,7 +46,6 @@ export async function PATCH(request: Request) {
     });
     return new Response('Todo 상태 업데이트 완료', { status: 200 });
   } catch (error) {
-    console.error(`에러 발생`, error);
     return new Response('서버 에러', { status: 500 });
   }
 }
