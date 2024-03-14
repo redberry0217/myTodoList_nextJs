@@ -31,18 +31,26 @@ function TodoItemList() {
     return <div>데이터 불러오기 오류</div>;
   }
 
-  const undoneList: TodoList = data.filter((item) => !item.isDone);
+  const todoList: TodoList = data.filter((item) => !item.isDone);
   const doneList: TodoList = data.filter((item) => item.isDone);
 
   return (
     <section className="flex flex-col items-center pt-10 gap-y-10">
       <div className="w-[800px] border rounded-xl p-5">
         <h1 className="text-lg text-rose-500 mb-3">✏️ TodoList</h1>
-        {isLoading ? <div>데이터 로딩....</div> : <TodoItem todoData={undoneList} />}
+        {todoList.length === 0 ? (
+          <div className="text-center">등록된 Todo가 없습니다.</div>
+        ) : (
+          <TodoItem todoData={todoList} />
+        )}
       </div>
       <div className="w-[800px] border rounded-xl p-5">
         <h1 className="text-lg text-rose-500">✅ DoneList</h1>
-        {isLoading ? <div>데이터 로딩....</div> : <TodoItem todoData={doneList} />}
+        {doneList.length === 0 ? (
+          <div className="text-center">완료된 Todo가 없습니다.</div>
+        ) : (
+          <TodoItem todoData={doneList} />
+        )}
       </div>
       <div className="w-[800px] flex justify-end">
         <button style={buttonStyle} onClick={() => router.push(`/report`)}>
