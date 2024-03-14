@@ -4,14 +4,13 @@ import { TodoList } from '@/app/types';
 import { buttonStyle } from '@/styles/styles';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { useParams, useRouter } from 'next/navigation';
 import React from 'react';
 
 function DetailPage() {
-  const { id }: { id: string } = useParams();
   const queryClient = useQueryClient();
   const router = useRouter();
+  const { id }: { id: string } = useParams();
 
   /** Todo 삭제하기 Mutation */
   const deleteMutation = useMutation({
@@ -62,7 +61,7 @@ function DetailPage() {
     deleteMutation.mutate(id, {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['todos'] });
-        router.push('/todos-csr', undefined, { shallow: true });
+        router.replace('/todos-csr');
       }
     });
   };

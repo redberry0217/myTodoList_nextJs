@@ -20,27 +20,15 @@
       "isDone": false
     },
     {
-      "id": "46b7",
-      "title": "ㅅㅅㅅㅅ",
-      "content": "ㅅㅅㅅ",
-      "isDone": true
-    },
-    {
-      "id": "1009",
-      "title": "ㅇㅇㅇㅇ",
-      "content": "ㅇㅇㅇㅇ",
-      "isDone": true
-    },
-    {
-      "id": "4ba5",
-      "title": "111",
-      "content": "111",
-      "isDone": true
-    },
-    {
       "id": "5eb4",
       "title": "빨래하기",
       "content": "사실은 세탁기가 다 하는 거지만",
+      "isDone": true
+    },
+    {
+      "id": "bdab",
+      "title": "오늘 점심 뭐먹지",
+      "content": "맛있는거 먹어야 오후에 코딩 집중할텐데 ㅎ",
       "isDone": false
     }
   ]
