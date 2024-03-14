@@ -1,16 +1,18 @@
 'use client';
 
+import EditForm from '@/app/components/editForm';
 import { TodoList } from '@/app/types';
 import { buttonStyle } from '@/styles/styles';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 function DetailPage() {
   const queryClient = useQueryClient();
   const router = useRouter();
   const { id }: { id: string } = useParams();
+  const [isEditing, setIsEditing] = useState(false);
 
   /** Todo 삭제하기 Mutation */
   const deleteMutation = useMutation({
@@ -53,7 +55,7 @@ function DetailPage() {
   }
 
   const myTodo = data.find((item) => item.id === id);
-  if (!myTodo) return;
+  if (!myTodo) return null;
 
   /** Todo 삭제하기 버튼 클릭 핸들러 */
   const handleDelete = (id: string) => {
@@ -66,30 +68,43 @@ function DetailPage() {
     });
   };
 
+  /** Todo 수정하기 버튼 클릭 핸들러 */
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
   return (
     <section className="flex flex-col items-center pt-10 bg-rose-50 h-screen">
       <div className="w-[800px] bg-white rounded-xl p-5 flex flex-col">
-        <h1 className="text-lg text-rose-500 mb-3">💘Todo 상세보기</h1>
+        <h1 className="text-lg text-rose-500 mb-3">{isEditing ? '✏️Todo 수정하기' : '💘Todo 상세보기'}</h1>
         <hr />
         <div className="flex flex-col pl-5 mt-5">
-          <h3 className="leading-loose">
-            🔹제목 : {myTodo.title}
-            <br />
-            🔹내용 : {myTodo.content}
-            <br />
-            🔹상태 : {myTodo.isDone ? '완료됨' : '완료되지 않음'}
-          </h3>
+          {isEditing ? (
+            <EditForm data={myTodo} setIsEditing={setIsEditing} />
+          ) : (
+            <h3 className="leading-loose">
+              🔹제목 : {myTodo.title}
+              <br />
+              🔹내용 : {myTodo.content}
+              <br />
+              🔹상태 : {myTodo.isDone ? '완료됨' : '완료되지 않음'}
+            </h3>
+          )}
         </div>
-        <div className="flex gap-4 mt-10 justify-center">
-          <button style={buttonStyle}>수정</button>
-          <button style={buttonStyle} onClick={() => handleDelete(id)}>
-            삭제
-          </button>
-        </div>
+        {isEditing ? null : (
+          <div className="flex gap-5 mt-10 justify-center">
+            <button style={buttonStyle} onClick={handleEdit}>
+              수정
+            </button>
+            <button style={buttonStyle} onClick={() => handleDelete(id)}>
+              삭제
+            </button>
+          </div>
+        )}
       </div>
       <div className="mt-5 flex w-[800px] justify-end">
         <Link href="/todos-csr" style={buttonStyle}>
-          뒤로가기
+          목록으로 돌아가기
         </Link>
       </div>
     </section>
