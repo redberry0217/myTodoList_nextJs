@@ -1,6 +1,8 @@
 export async function DELETE(request: Request): Promise<Response> {
   try {
-    const { id } = await request.json();
+    const url = new URL(request.url);
+    const id = url.pathname.split('/').pop();
+
     await fetch(`http://localhost:4000/todos/${id}`, {
       method: 'DELETE'
     });

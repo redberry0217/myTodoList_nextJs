@@ -37,31 +37,6 @@ function TodoItem({ todoData }: { todoData: Todos[] }) {
     });
   };
 
-  const deleteMutation = useMutation({
-    mutationFn: async (id: string) => {
-      try {
-        await fetch(`http://localhost:3000/api/todos/${id}`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-      } catch (error) {
-        alert(`Todo 삭제 에러 발생, 다시 시도하세요.`);
-        console.log('error', error);
-      }
-    }
-  });
-
-  const handleDelete = (id: string) => {
-    if (!window.confirm(`해당 Todo를 삭제하시겠습니까?`)) return;
-    deleteMutation.mutate(id, {
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['todos'] });
-      }
-    });
-  };
-
   return (
     <section className="flex flex-col items-center pt-3">
       <ul>
@@ -79,18 +54,10 @@ function TodoItem({ todoData }: { todoData: Todos[] }) {
             <div className={`w-[400px] ${item.isDone ? 'apply: text-gray-400' : 'apply: text-black'}`}>
               {item.content}
             </div>
-            <div className="flex gap-2 justify-end w-[150px]">
+            <div className="flex gap-2 justify-center w-[150px]">
               <Link href={`/todos-csr/${item.id}`} style={buttonStyle}>
                 보기
               </Link>
-              <button
-                style={buttonStyle}
-                onClick={() => {
-                  handleDelete(item.id);
-                }}
-              >
-                삭제
-              </button>
               <div
                 className="flex justify-center items-center cursor-pointer"
                 onClick={() => toggleIsDone(item.id, item.isDone)}
