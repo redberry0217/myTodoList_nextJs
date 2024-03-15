@@ -2,8 +2,8 @@ import React from 'react';
 import { Todos } from '../types';
 
 async function ReportPage() {
-  const response = await fetch(`http://localhost:3000/api/todos`, { next: { revalidate: 10 } });
-  const { todosList }: { todosList: Todos[] } = await response.json();
+  const response = await fetch(`http://localhost:4000/todos`, { next: { revalidate: 10 } });
+  const todosList: Todos[] = await response.json();
   const todoList = todosList.filter((item) => item.isDone === false);
   const doneList = todosList.filter((item) => item.isDone === true);
 

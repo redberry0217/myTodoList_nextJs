@@ -2,8 +2,8 @@ import React from 'react';
 import { CompanyInfo } from '../types';
 
 async function AboutPage() {
-  const response = await fetch(`http://localhost:3000/api/company`);
-  const { companyInfo }: { companyInfo: CompanyInfo } = await response.json();
+  const response = await fetch(`http://localhost:4000/companyInfo`);
+  const companyInfo: CompanyInfo = await response.json();
 
   return (
     <main className="h-screen flex justify-center bg-rose-50">

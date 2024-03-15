@@ -11,6 +11,8 @@ import Link from 'next/link';
 
 function TodoItem({ todoData }: { todoData: Todos[] }) {
   const queryClient = useQueryClient();
+
+  /** Todo isDone 상태 토글 Mutation*/
   const isDoneMutation = useMutation({
     mutationFn: async (updatedTodo: UpdatedTodo) => {
       try {
@@ -25,7 +27,8 @@ function TodoItem({ todoData }: { todoData: Todos[] }) {
     }
   });
 
-  const toggleIsDone = (id: string, isDone: boolean) => {
+  /** Todo 완료하기 클릭 핸들러 */
+  const handleToggleIsDone = (id: string, isDone: boolean) => {
     const updatedTodo = {
       id: id,
       isDone: !isDone
@@ -60,7 +63,7 @@ function TodoItem({ todoData }: { todoData: Todos[] }) {
               </Link>
               <div
                 className="flex justify-center items-center cursor-pointer"
-                onClick={() => toggleIsDone(item.id, item.isDone)}
+                onClick={() => handleToggleIsDone(item.id, item.isDone)}
               >
                 {item.isDone ? (
                   <Image src={Checked} alt="체크된 박스" style={{ width: '18px' }} />
